@@ -1,0 +1,17 @@
+.navbar {
+  display: flex;
+  padding: .5rem 0;
+}
+.navbar a {
+  color: rgba(0,0,0,.5);
+  display: block;
+  padding: .5rem .5rem;
+}
+
+.navbar a.active {
+  color: rgba(0,0,0,.9);
+}
+
+.navbar a:hover {
+  color: rgba(0,0,0,.7);
+}

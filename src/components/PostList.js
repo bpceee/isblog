@@ -4,6 +4,8 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import { Link } from "react-router-dom";
 
+import "./PostList.css";
+
 const PostList = () => (
   // TODO: add pagination
   <Query
@@ -28,16 +30,13 @@ const PostList = () => (
       if (error) return <p>Error :(</p>;
 
       return (
-        <React.Fragment>
-          <h2>My Blog</h2>
-          <ul>
-            {data.repository.issues.edges.map(({node})=>(
-              <li key={node.number}>
-                {new Date(node.createdAt).toString().substring(4, 15)} <Link to={`/posts/${node.number}`}> {`${node.title}`}</Link>
-              </li>
-            ))}
-          </ul>
-        </React.Fragment>
+        <ul className="post-list">
+          {data.repository.issues.edges.map(({node})=>(
+            <li key={node.number}>
+              {new Date(node.createdAt).toString().substring(4, 15)} <Link to={`/posts/${node.number}`}> {`${node.title}`}</Link>
+            </li>
+          ))}
+        </ul>
       );
     }}
   </Query>

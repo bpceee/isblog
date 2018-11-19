@@ -27,10 +27,14 @@ const Post = ({ match }) => (
       if (error) return <p>Not Found :(</p>;
 
       return (
-        <div>
-          <h2>{data.repository.issue.title}</h2>  
-          <div dangerouslySetInnerHTML={createMarkup(data.repository.issue.bodyHTML)}></div> 
-        </div>
+        <React.Fragment>
+          <section>
+            <h1>{data.repository.issue.title}</h1>  
+          </section>
+          <section >
+            <div dangerouslySetInnerHTML={createMarkup(data.repository.issue.bodyHTML)}></div> 
+          </section>
+        </React.Fragment>
       );
     }}
   </Query>
