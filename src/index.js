@@ -15,8 +15,10 @@ const client = new ApolloClient({
   }
 });
 
+const BASENAME = process.env.NODE_ENV === 'production'? `/${process.env.REACT_APP_REPONAME}`: '/';
+
 ReactDOM.render(
-  <BrowserRouter>
+  <BrowserRouter basename={BASENAME}>
     <ApolloProvider client={client}>
       <App />
     </ApolloProvider>

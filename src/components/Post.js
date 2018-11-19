@@ -11,7 +11,7 @@ const Post = ({ match }) => (
   <Query
     query={gql`
       query {
-        repository(owner:"bpceee", name:"blog") {
+        repository(owner:"${process.env.REACT_APP_USERNAME}", name:"${process.env.REACT_APP_REPONAME}") {
           issue(number:${match.params.id}) {
             number
             title
