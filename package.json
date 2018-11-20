@@ -4,6 +4,7 @@
   "homepage": "https://bpceee.github.io/blog",
   "dependencies": {
     "apollo-boost": "^0.1.21",
+    "github-markdown-css": "^2.10.0",
     "graphql": "^14.0.2",
     "react": "^16.6.3",
     "react-apollo": "^2.3.1",

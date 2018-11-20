@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { Switch, Route } from "react-router-dom";
 
-import './App.css';
 import About from './About';
 import Navbar from './Navbar';
 import Post from './Post';
 import PostList from './PostList';
+import styles from './App.module.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="blog-app">
+      <div className={styles.app}>
         <Navbar/>
-        <div className="main">
+        <div className={styles.main}>
           <Switch>
             <Route exact path="/" component={PostList} />
             <Route path="/posts/:id" component={Post} />

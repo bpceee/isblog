@@ -2,6 +2,7 @@
 import React from 'react';
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
+import 'github-markdown-css/github-markdown.css'
 
 function createMarkup(markup) {
   return {__html: markup};
@@ -23,17 +24,17 @@ const Post = ({ match }) => (
     `}
   >
     {({ loading, error, data }) => {
-      if (loading) return <p>Loading...</p>;
-      if (error) return <p>Not Found :(</p>;
+      if (loading) return <span>Loading...</span>;
+      if (error) return <span>Not Found :(</span>;
 
       return (
         <React.Fragment>
           <section>
             <h1>{data.repository.issue.title}</h1>  
           </section>
-          <section >
+          <article className="markdown-body">
             <div dangerouslySetInnerHTML={createMarkup(data.repository.issue.bodyHTML)}></div> 
-          </section>
+          </article>
         </React.Fragment>
       );
     }}

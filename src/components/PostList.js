@@ -4,7 +4,14 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import { Link } from "react-router-dom";
 
-import "./PostList.css";
+import styles from "./PostList.module.css";
+
+const PostDate = ({dateString, ...elemProps}) => {
+  const splits = new Date(dateString).toString().substring(4, 15).split(' ');
+  splits.unshift(splits.splice(1, 1))
+  const transformedDataString = splits.join(' ');
+  return <span {...elemProps}>{transformedDataString}</span>
+}
 
 const PostList = () => (
   // TODO: add pagination
@@ -26,14 +33,15 @@ const PostList = () => (
     `}
   >
     {({ loading, error, data }) => {
-      if (loading) return <p>Loading...</p>;
-      if (error) return <p>Error :(</p>;
+      if (loading) return <span>Loading...</span>;
+      if (error) return <span>Error :(</span>;
 
       return (
-        <ul className="post-list">
+        <ul className={styles.list}>
           {data.repository.issues.edges.map(({node})=>(
             <li key={node.number}>
-              {new Date(node.createdAt).toString().substring(4, 15)} <Link to={`/posts/${node.number}`}> {`${node.title}`}</Link>
+              <PostDate dateString={node.createdAt} className={styles.date}></PostDate> 
+              <Link to={`/posts/${node.number}`}> {`${node.title}`}</Link>
             </li>
           ))}
         </ul>

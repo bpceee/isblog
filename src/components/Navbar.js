@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
-import './Navbar.css';
+import styles from './Navbar.module.css';
 
 const Navbar = () => (
-  <nav className="navbar">
+  <nav className={styles.navbar}>
     <NavLink exact to={'/'}> Home </NavLink>
     <NavLink to={'/about'}> About </NavLink>
   </nav>  
