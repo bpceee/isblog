@@ -20,6 +20,10 @@ class App extends Component {
             <Route component={()=>"Not Found :("} />
           </Switch>
         </div>
+        <footer className={styles.footer}>
+          <hr/>
+          <small> © 2018 Ken Bi. Powered by <a href="https://github.com/bpceee/blog" rel="noopener noreferrer" target="_blank">Me</a> using the <a href="https://github.com/arjunkrishnababu96/basics" rel="noopener noreferrer" target="_blank">Basics</a> theme. </small>
+        </footer>
       </div>
     );
   }

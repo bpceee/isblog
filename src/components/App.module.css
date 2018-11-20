@@ -6,6 +6,23 @@
   margin-left: auto;  
 }
 
+@media (min-width: 576px) {
+  .app {
+    padding-right: 2rem;
+    padding-left: 2rem;  
+  }
+} 
 .main {
   padding: 0 .5rem;
+}
+
+.footer {
+  text-align: right;
+}
+
+.footer :global hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0,0,0,.1);
 }

@@ -41,7 +41,7 @@ const PostList = () => (
           {data.repository.issues.edges.map(({node})=>(
             <li key={node.number}>
               <PostDate dateString={node.createdAt} className={styles.date}></PostDate> 
-              <Link to={`/posts/${node.number}`}> {`${node.title}`}</Link>
+              <Link to={`/posts/${node.number}`}>{node.title}</Link>
             </li>
           ))}
         </ul>
