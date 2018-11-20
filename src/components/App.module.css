@@ -18,6 +18,7 @@
 
 .footer {
   text-align: right;
+  margin: 1rem 0;
 }
 
 .footer :global hr {

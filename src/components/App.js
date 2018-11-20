@@ -12,14 +12,14 @@ class App extends Component {
     return (
       <div className={styles.app}>
         <Navbar/>
-        <div className={styles.main}>
+        <main className={styles.main}>
           <Switch>
             <Route exact path="/" component={PostList} />
             <Route path="/posts/:id" component={Post} />
             <Route path="/about" component={About} />
             <Route component={()=>"Not Found :("} />
           </Switch>
-        </div>
+        </main>
         <footer className={styles.footer}>
           <hr/>
           <small> © 2018 Ken Bi. Powered by <a href="https://github.com/bpceee/blog" rel="noopener noreferrer" target="_blank">Me</a> using the <a href="https://github.com/arjunkrishnababu96/basics" rel="noopener noreferrer" target="_blank">Basics</a> theme. </small>

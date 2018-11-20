@@ -4,6 +4,39 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import 'github-markdown-css/github-markdown.css'
 
+class DumbPost extends React.Component {
+
+  componentDidMount () {
+    const {post} = this.props;
+    const main = document.querySelector("main");
+    const script = document.createElement("script");
+    script.src = "https://utteranc.es/client.js";
+    script.setAttribute('repo', 'bpceee/blog');
+    script.setAttribute('issue-number', post.number);
+    script.async = true;
+    main.appendChild(script);
+  }  
+
+  componentWillUnmount() {
+    const utterances = document.querySelector(".utterances");
+    utterances.remove();
+  }
+
+  render() {
+    const {post} = this.props;
+    return (
+      <React.Fragment>
+        <section>
+          <h1>{post.title}</h1>  
+        </section>
+        <article className="markdown-body">
+          <div dangerouslySetInnerHTML={createMarkup(post.bodyHTML)}></div> 
+        </article>
+      </React.Fragment>
+    );
+  }
+}
+
 function createMarkup(markup) {
   return {__html: markup};
 }
@@ -26,17 +59,7 @@ const Post = ({ match }) => (
     {({ loading, error, data }) => {
       if (loading) return <span>Loading...</span>;
       if (error) return <span>Not Found :(</span>;
-
-      return (
-        <React.Fragment>
-          <section>
-            <h1>{data.repository.issue.title}</h1>  
-          </section>
-          <article className="markdown-body">
-            <div dangerouslySetInnerHTML={createMarkup(data.repository.issue.bodyHTML)}></div> 
-          </article>
-        </React.Fragment>
-      );
+      return <DumbPost post={data.repository.issue}/>
     }}
   </Query>
 )
