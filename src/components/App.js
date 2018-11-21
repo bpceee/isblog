@@ -22,7 +22,7 @@ class App extends Component {
         </main>
         <footer className={styles.footer}>
           <hr/>
-          <small> © 2018 Ken Bi. Powered by <a href="https://github.com/bpceee/blog" rel="noopener noreferrer" target="_blank">Me</a> using the <a href="https://github.com/arjunkrishnababu96/basics" rel="noopener noreferrer" target="_blank">Basics</a> theme. </small>
+          <small> © 2018 Ken Bi. Powered by <a href="https://github.com/bpceee/isblog" rel="noopener noreferrer" target="_blank">isBlog</a> using the <a href="https://github.com/arjunkrishnababu96/basics" rel="noopener noreferrer" target="_blank">Basics</a> theme. </small>
         </footer>
       </div>
     );

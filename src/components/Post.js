@@ -11,7 +11,7 @@ class DumbPost extends React.Component {
     const main = document.querySelector("main");
     const script = document.createElement("script");
     script.src = "https://utteranc.es/client.js";
-    script.setAttribute('repo', 'bpceee/blog');
+    script.setAttribute('repo', `${process.env.REACT_APP_USERNAME}/${process.env.REACT_APP_REPO}`);
     script.setAttribute('issue-number', post.number);
     script.async = true;
     main.appendChild(script);
@@ -45,7 +45,7 @@ const Post = ({ match }) => (
   <Query
     query={gql`
       query {
-        repository(owner:"${process.env.REACT_APP_USERNAME}", name:"${process.env.REACT_APP_REPONAME}") {
+        repository(owner:"${process.env.REACT_APP_USERNAME}", name:"${process.env.REACT_APP_REPO}") {
           issue(number:${match.params.id}) {
             number
             title

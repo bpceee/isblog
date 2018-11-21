@@ -18,7 +18,7 @@ const PostList = () => (
   <Query
     query={gql`
       query {
-        repository(owner:"${process.env.REACT_APP_USERNAME}", name:"${process.env.REACT_APP_REPONAME}") {
+        repository(owner:"${process.env.REACT_APP_USERNAME}", name:"${process.env.REACT_APP_REPO}") {
           issues(last:100, orderBy: {field: CREATED_AT, direction: DESC}) {
             edges {
               node {
