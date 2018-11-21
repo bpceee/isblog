@@ -14,4 +14,11 @@
 
 .date {
   padding-right: 1rem;
+  font-family: sans-serif;
+}
+
+:global .utterances {
+  border-top: 1px solid rgba(0,0,0,.1);
+  margin-bottom: -9px;
+  margin-top: 10px;
 }
