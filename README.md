@@ -10,9 +10,8 @@ REACT_APP_USERNAME=your_github_username
 REACT_APP_REPO=your_issues_repo_name
 REACT_APP_TOKEN=your_token_created_from_https://github.com/settings/tokens
 ```
-- Set `homepage` in package.json
-- Set `scripts.deploy` in package.json for which repo to deploy on. Refer to [gh-pages docs](https://www.npmjs.com/package/gh-pages)
-- Set `segmentCount` in public/404.html
+- Set `homepage` in `package.json`
+- Set `scripts.deploy` in `package.json` for which repo to deploy on. Refer to [gh-pages docs](https://www.npmjs.com/package/gh-pages)
 - `npm install`
 - `npm run build`
 - `npm run deploy`
