@@ -8,6 +8,7 @@ Set up a blog using git repo's issues as posts.
 ```
 REACT_APP_USERNAME=your_github_username
 REACT_APP_REPO=your_issues_repo_name
+REACT_APP_TITLE=your_homepage_title
 REACT_APP_TOKEN=your_token_created_from_https://github.com/settings/tokens
 ```
 - Set `homepage` in `package.json`

@@ -1,7 +1,13 @@
 import React from 'react';
 
-const About = () => (
-  <div>Nothing here!</div>
-)
+class About extends React.Component {
+  componentDidMount() {
+    document.title = "About";
+  }
+
+  render () {
+    return <div>Nothing here!</div>;
+  }
+}
 
 export default About;

@@ -8,6 +8,8 @@ class DumbPost extends React.Component {
 
   componentDidMount () {
     const {post} = this.props;
+    document.title = post.title;
+
     const main = document.querySelector("main");
     const script = document.createElement("script");
     script.src = "https://utteranc.es/client.js";

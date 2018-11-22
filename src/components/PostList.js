@@ -13,41 +13,48 @@ const PostDate = ({dateString, ...elemProps}) => {
   return <span {...elemProps}>{transformedDataString}</span>
 }
 
-const PostList = () => (
-  // TODO: add pagination
-  <Query
-    query={gql`
-      query {
-        repository(owner:"${process.env.REACT_APP_USERNAME}", name:"${process.env.REACT_APP_REPO}") {
-          issues(last:100, orderBy: {field: CREATED_AT, direction: DESC}) {
-            edges {
-              node {
-                title
-                number
-                createdAt
+class PostList extends React.Component {
+  
+  componentDidMount () {
+    document.title = process.env.REACT_APP_TITLE;
+  }
+
+  render () {
+    // TODO: add pagination
+    return <Query
+      query={gql`
+        query {
+          repository(owner:"${process.env.REACT_APP_USERNAME}", name:"${process.env.REACT_APP_REPO}") {
+            issues(last:100, orderBy: {field: CREATED_AT, direction: DESC}) {
+              edges {
+                node {
+                  title
+                  number
+                  createdAt
+                }
               }
             }
           }
         }
-      }
-    `}
-  >
-    {({ loading, error, data }) => {
-      if (loading) return <span>Loading...</span>;
-      if (error) return <span>Error :(</span>;
+      `}
+    >
+      {({ loading, error, data }) => {
+        if (loading) return <span>Loading...</span>;
+        if (error) return <span>Error :(</span>;
 
-      return (
-        <ul className={styles.list}>
-          {data.repository.issues.edges.map(({node})=>(
-            <li key={node.number}>
-              <PostDate dateString={node.createdAt} className={styles.date}></PostDate> 
-              <Link to={`/posts/${node.number}`}>{node.title}</Link>
-            </li>
-          ))}
-        </ul>
-      );
-    }}
-  </Query>
-);
+        return (
+          <ul className={styles.list}>
+            {data.repository.issues.edges.map(({node})=>(
+              <li key={node.number}>
+                <PostDate dateString={node.createdAt} className={styles.date}></PostDate> 
+                <Link to={`/posts/${node.number}`}>{node.title}</Link>
+              </li>
+            ))}
+          </ul>
+        );
+      }}
+    </Query>;
+  }
+}
 
 export default PostList;
