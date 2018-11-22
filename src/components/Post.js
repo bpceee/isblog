@@ -19,7 +19,7 @@ class DumbPost extends React.Component {
 
   componentWillUnmount() {
     const utterances = document.querySelector(".utterances");
-    utterances.remove();
+    utterances && utterances.remove();
   }
 
   render() {
