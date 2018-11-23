@@ -17,15 +17,18 @@ REACT_APP_TOKEN=your_token_created_from_https://github.com/settings/tokens
 - `npm run build`
 - `npm run deploy`
 
-## For development
+## How to blog
 
-### `npm start`
+Create issues in your `REACT_APP_REPO`. Remember to lable all the issues you wanna published to `post`, since you don't anyone else to inundate blog.
+
+The about page will be the issue labeled with `about`.
+
+## Development
+
+`npm start`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
 ## Limitation
 
@@ -33,6 +36,5 @@ There is a [rate limit](https://developer.github.com/v4/guides/resource-limitati
 
 ## Learn More
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[Using Github Issues to host a blog](https://bpceee.github.io/posts/1)
 

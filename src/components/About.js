@@ -1,13 +1,35 @@
 import React from 'react';
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
+import DumbPost from './DumbPost';
 
-class About extends React.Component {
-  componentDidMount() {
-    document.title = "About";
-  }
+const About = () => (
+  <Query
+    query={gql`
+      query {
+        repository(owner:"${process.env.REACT_APP_USERNAME}", name:"${process.env.REACT_APP_REPO}") {
+          issues(last:1, labels:"about") {
+            edges {
+              node {
+                title
+                number
+                bodyHTML
+              }
+            }
+          }
+        }
+      }
+    `}
+  >
+    {({ loading, error, data }) => {
+      if (loading) return <span>Loading...</span>;
+      if (error) return <span>Error :(</span>;
 
-  render () {
-    return <div>Nothing here!</div>;
-  }
-}
+      const post = data.repository.issues.edges[0].node || {bodyHTML: `<div>Nothing here!<div>`};
+      // const post = {bodyHTML: `<div>Nothing here!<div>`};
+      return <DumbPost post={post}/>
+    }}
+  </Query>
+)
 
 export default About;

@@ -25,7 +25,7 @@ class PostList extends React.Component {
       query={gql`
         query {
           repository(owner:"${process.env.REACT_APP_USERNAME}", name:"${process.env.REACT_APP_REPO}") {
-            issues(last:100, orderBy: {field: CREATED_AT, direction: DESC}) {
+            issues(last:100, labels:"post", orderBy: {field: CREATED_AT, direction: DESC}) {
               edges {
                 node {
                   title
