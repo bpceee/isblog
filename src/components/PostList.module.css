@@ -1,21 +1,27 @@
+.header {
+  margin-bottom: 1rem;
+}
+
 .list {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-.list :global a {
-  color: black;
+a.postTitleLink {
+  color: #0a50c2;
+  border-bottom: 1px solid #0a50c2;
+  padding: 2px 2px 1px;
 }
 
-.list :global a:hover {
-  text-decoration: underline;
+a.postTitleLink:hover {
+  background-color: #0a50c2;
+  color: #fff;
 }
 
 .date {
   display: none;
 }
-
 @media (min-width: 576px) {
   .date {
     display: inline;
@@ -23,9 +29,3 @@
     font-family: sans-serif;
   }
 } 
-
-:global .utterances {
-  border-top: 1px solid rgba(0,0,0,.1);
-  margin-bottom: -9px;
-  margin-top: 10px;
-}

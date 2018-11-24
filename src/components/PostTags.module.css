@@ -1,0 +1,11 @@
+a.tag {
+  border: 0;
+  background: #eee;
+  color: #000; 
+  padding: 2px 2px 1px;
+}
+
+a.tag:hover {
+  background-color: #0a50c2;
+  color: #fff;
+}

@@ -14,6 +14,13 @@ const Post = ({ match }) => (
             title
             bodyHTML
             createdAt
+            labels(first: 10) {
+              edges {
+                node { 
+                  name
+                }
+              }
+            }
           }
         }
       }

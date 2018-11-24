@@ -15,6 +15,7 @@ class App extends Component {
         <main className={styles.main}>
           <Switch>
             <Route exact path="/" component={PostList} />
+            <Route path="/posts/tags/:tag" component={PostList} />
             <Route path="/posts/:id" component={Post} />
             <Route path="/about" component={About} />
             <Route component={()=>"Not Found :("} />

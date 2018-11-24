@@ -26,7 +26,6 @@ const About = () => (
       if (error) return <span>Error :(</span>;
 
       const post = data.repository.issues.edges[0].node || {bodyHTML: `<div>Nothing here!<div>`};
-      // const post = {bodyHTML: `<div>Nothing here!<div>`};
       return <DumbPost post={post}/>
     }}
   </Query>

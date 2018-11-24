@@ -1,0 +1,11 @@
+.meta {
+  font-size: 14px;
+  margin-top: -.2em;  
+}
+
+
+:global .utterances {
+  border-top: 1px solid rgba(0,0,0,.1);
+  margin-bottom: -17px;
+  margin-top: 10px;
+}

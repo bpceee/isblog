@@ -5,13 +5,8 @@ import gql from "graphql-tag";
 import { Link } from "react-router-dom";
 
 import styles from "./PostList.module.css";
-
-const PostDate = ({dateString, ...elemProps}) => {
-  const splits = new Date(dateString).toString().substring(4, 15).split(' ');
-  splits.unshift(splits.splice(1, 1))
-  const transformedDataString = splits.join(' ');
-  return <span {...elemProps}>{transformedDataString}</span>
-}
+import PostTags from "./PostTags";
+import PostDate from "./PostDate";
 
 class PostList extends React.Component {
   
@@ -21,16 +16,24 @@ class PostList extends React.Component {
 
   render () {
     // TODO: add pagination
+    const tag = this.props.match.params.tag || "post";
     return <Query
       query={gql`
         query {
           repository(owner:"${process.env.REACT_APP_USERNAME}", name:"${process.env.REACT_APP_REPO}") {
-            issues(last:100, labels:"post", orderBy: {field: CREATED_AT, direction: DESC}) {
+            issues(last:100, labels:"${tag}", orderBy: {field: CREATED_AT, direction: DESC}) {
               edges {
                 node {
                   title
                   number
                   createdAt
+                  labels(first: 10) {
+                    edges {
+                      node { 
+                        name
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -42,15 +45,23 @@ class PostList extends React.Component {
         if (loading) return <span>Loading...</span>;
         if (error) return <span>Error :(</span>;
 
+        const {tag} = this.props.match.params;
+        
         return (
-          <ul className={styles.list}>
-            {data.repository.issues.edges.map(({node})=>(
-              <li key={node.number}>
-                <PostDate dateString={node.createdAt} className={styles.date}></PostDate> 
-                <Link to={`/posts/${node.number}`}>{node.title}</Link>
-              </li>
-            ))}
-          </ul>
+          <React.Fragment>
+            { tag &&
+              <h1 className={styles.header}>Blog posts tagged "{tag}"</h1>
+            }
+            <ul className={styles.list}>
+              {data.repository.issues.edges.map(({node: post}) => (
+                <li key={post.number}>
+                  <PostDate dateString={post.createdAt} className={styles.date}></PostDate>
+                  <Link className={styles.postTitleLink} to={`/posts/${post.number}`}>{post.title}</Link>
+                  <PostTags tags={post.labels.edges} />
+                </li>
+              ))}
+            </ul>
+          </React.Fragment>
         );
       }}
     </Query>;
