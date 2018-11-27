@@ -20,7 +20,7 @@ class DumbPost extends React.Component {
     }
   }
 
-  loadUtterance = () => {
+  loadUtterance() {
     const main = document.querySelector("main");
     const script = document.createElement("script");
     script.src = "https://utteranc.es/client.js";
@@ -35,15 +35,19 @@ class DumbPost extends React.Component {
     if (!ele) {
       return;
     }
-    const lastEle = getLastElement(ele);
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].intersectionRatio <= 0) {
-        return;
-      }
+    if (window["IntersectionObserver"]) {
+      const lastEle = getLastElement(ele);
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].intersectionRatio <= 0) {
+          return;
+        }
+        this.loadUtterance();
+        observer.unobserve(lastEle);
+      }, {threshold: 1});
+      observer.observe(lastEle);
+    } else {
       this.loadUtterance();
-      observer.unobserve(lastEle);
-    }, {threshold: 1});
-    observer.observe(lastEle);
+    }
   };
 
   render() {
