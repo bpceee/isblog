@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import ApolloClient from "apollo-boost";
 import { BrowserRouter } from 'react-router-dom'
 import { ApolloProvider } from "react-apollo";
+import * as serviceWorker from './serviceWorker';
 
 import './index.css';
 import App from './components/App';
@@ -30,3 +31,6 @@ ReactDOM.render(
   </BrowserRouter>, 
   document.getElementById('root')
 );
+
+// Learn more about service workers: http://bit.ly/CRA-PWA
+serviceWorker.register();
