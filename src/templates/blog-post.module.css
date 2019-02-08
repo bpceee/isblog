@@ -1,8 +1,15 @@
+.blog-post h1 {
+  margin-top: 8px;
+}
+
 .meta {
   font-size: 14px;
   margin-top: -.2em;  
 }
 
+:global .markdown-body {
+  font-family: inherit;
+}
 
 :global .utterances {
   border-top: 1px solid rgba(0,0,0,.1);

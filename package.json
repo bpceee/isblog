@@ -3,33 +3,41 @@
   "version": "0.1.0",
   "homepage": "https://bpceee.github.io/",
   "dependencies": {
-    "apollo-boost": "^0.1.21",
-    "github-markdown-css": "^2.10.0",
-    "graphql": "^14.0.2",
-    "react": "^16.6.3",
-    "react-apollo": "^2.3.1",
-    "react-dom": "^16.6.3",
-    "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.1"
+    "dotenv": "^6.2.0",
+    "gatsby": "^2.0.116",
+    "gatsby-image": "^2.0.29",
+    "gatsby-plugin-feed": "^2.0.13",
+    "gatsby-plugin-google-analytics": "^2.0.13",
+    "gatsby-plugin-manifest": "^2.0.17",
+    "gatsby-plugin-offline": "^2.0.22",
+    "gatsby-plugin-react-helmet": "^3.0.6",
+    "gatsby-plugin-sharp": "^2.0.20",
+    "gatsby-plugin-typography": "^2.2.7",
+    "gatsby-remark-copy-linked-files": "^2.0.9",
+    "gatsby-remark-images": "^2.0.6",
+    "gatsby-remark-prismjs": "^3.2.4",
+    "gatsby-remark-responsive-iframe": "^2.0.9",
+    "gatsby-remark-smartypants": "^2.0.8",
+    "gatsby-source-filesystem": "^2.0.20",
+    "gatsby-source-graphql": "^2.0.10",
+    "gatsby-transformer-remark": "^2.2.4",
+    "gatsby-transformer-sharp": "^2.1.13",
+    "github-markdown-css": "^3.0.1",
+    "prismjs": "^1.15.0",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "react-helmet": "^5.2.0",
+    "react-typography": "^0.16.18",
+    "typeface-merriweather": "0.0.54",
+    "typeface-montserrat": "0.0.54",
+    "typography": "^0.16.18",
+    "typography-theme-wordpress-2016": "^0.16.18"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build && cp build/index.html build/404.html",
-    "deploy": "gh-pages -d build -r git@github.com:bpceee/bpceee.github.io.git -b master",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "devDependencies": {
-    "gh-pages": "^2.0.1"
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   }
 }

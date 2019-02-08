@@ -1,0 +1,15 @@
+.main {
+  padding: 0 .5rem .5rem;
+}
+
+.footer {
+  text-align: right;
+  margin-bottom: .5rem;
+}
+
+.footer hr {
+  height: 0;
+  border: 0;
+  border-top: 1px solid rgba(0,0,0,.1);
+  margin-bottom: .5rem;
+}
