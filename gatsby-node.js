@@ -28,11 +28,14 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const postListByTag = path.resolve(`./src/templates/postListByTag.js`)
   const results = await graphql(POSTS_QL);
   const posts = results.data.github.repository.issues.edges;
+  const tags = new Set();
 
   posts.forEach(({node: post}) => {
     if (post.labels.edges[0].node.name === 'about') {
+      // create about page
       createPage({
         path: `/about`,
         component: blogPost,
@@ -42,6 +45,10 @@ exports.createPages = async ({ graphql, actions }) => {
       }); 
       return;
     }
+    post.labels.edges.forEach(({node: tag}) => {
+      tags.add(tag.name);
+    });
+    // create post pages
     createPage({
       path: `/posts/${post.number}`,
       component: blogPost,
@@ -50,6 +57,18 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     });
   });
+
+  tags.delete('post');
+  for (let tag of tags) {
+    // create taged post list page
+    createPage({
+      path: `/posts/tags/${tag}`,
+      component: postListByTag,
+      context: {
+        tag,
+      },
+    });    
+  }
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
