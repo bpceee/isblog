@@ -6,7 +6,7 @@ module.exports = {
     title: `Ken Bi`,
     author: `Ken Bi`,
     description: `Ken Bi's personal blog.`,
-    siteUrl: 'https://bpceee.github.io/',
+    siteUrl: 'https://kennethbi.com/',
   },
   plugins: [
     `gatsby-plugin-sharp`,

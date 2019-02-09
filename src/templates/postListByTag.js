@@ -10,14 +10,15 @@ class PostListByTag extends React.Component {
     const { data } = this.props;
     const siteTitle = data.site.siteMetadata.title;
     const posts = data.github.repository.issues.edges;
-    const { tag } = this.props.pageContext
+    const { tag } = this.props.pageContext;
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
           title={`Blog posts tagged ${tag}`}
-          keywords={[tag]} // TODO: use tags as keywords
+          keywords={[tag]} 
         />
+        <h1 style={{marginTop: 8}}>Blog posts tagged "{tag}"</h1>
         <PostList
           posts={posts}
         />
@@ -26,7 +27,7 @@ class PostListByTag extends React.Component {
   }
 }
 
-export default PostListByTag
+export default PostListByTag;
 
 export const pageQuery = graphql`
 query BlogPostsByTag($tag: [String!]) {

@@ -52,10 +52,12 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.github.repository.issue;
     const isAboutPage = post.labels.edges[0].node.name === 'about';
+    const tags = new Set(post.labels.edges.map(({node}) => node.name));
+    tags.delete('post');
 
     return (
       <Layout location={this.props.location} title={post.title}>
-        <SEO title={post.title} />
+        <SEO title={post.title} keywords={[...tags]} />
         <article className={styles.blogPost}>
           {!isAboutPage && // don't show header for "About" page
             <header>

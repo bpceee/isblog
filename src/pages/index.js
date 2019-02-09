@@ -10,12 +10,19 @@ class BlogIndex extends React.Component {
     const { data } = this.props;
     const siteTitle = data.site.siteMetadata.title;
     const posts = data.github.repository.issues.edges;
+    const tags = new Set();
+    posts.forEach(({node: post}) => {
+      post.labels.edges.forEach(({node: tag}) => {
+        tags.add(tag.name);
+      });
+    });
+    tags.delete('post');
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
           title="All posts"
-          keywords={[`blog`, `javascript`]} // TODO: use tags as keywords
+          keywords={[`blog`, ...Array.from(tags)]} 
         />
         <PostList
           posts={posts}
