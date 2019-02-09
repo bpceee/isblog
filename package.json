@@ -33,8 +33,12 @@
     "typography": "^0.16.18",
     "typography-theme-wordpress-2016": "^0.16.18"
   },
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
+  },
   "scripts": {
     "build": "gatsby build",
+    "deploy": "gh-pages -d public -r git@github.com:bpceee/bpceee.github.io.git -b master",
     "develop": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
