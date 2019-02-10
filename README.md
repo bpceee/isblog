@@ -15,7 +15,7 @@ REACT_APP_TOKEN=your_token_created_from_https://github.com/settings/tokens
 
 Create issues in your `REACT_APP_REPO`. Remember to lable all the issues you wanna published to `post`, since you don't anyone else to inundate blog. And tag the about page `about`.
 
-Run `yarn build & yarn deploy` to publish. 
+Run `yarn build && yarn deploy` to publish. 
 
 ## Development
 
