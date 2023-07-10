@@ -5,6 +5,12 @@ import { FC, useMemo } from "react";
 import Link from "next/link";
 import { PostTags } from "./PostTags";
 import { PostDate } from "./PostDate";
+import { IBM_Plex_Mono } from "next/font/google";
+
+const mono = IBM_Plex_Mono({
+  weight: ["400"],
+  subsets: ["latin"],
+});
 
 import styles from "./PostList.module.css";
 
@@ -32,7 +38,7 @@ export const PostList: FC<Props> = ({ posts }) => {
           <li key={post.number}>
             <PostDate
               dateString={post.createdAt}
-              className={styles.date}
+              className={`${styles.date} ${mono.className}`}
             ></PostDate>
             <Link
               className={styles.postTitleLink}
