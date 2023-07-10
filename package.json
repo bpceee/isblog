@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "deploy": "gh-pages -d out -r git@github.com:bpceee/bpceee.github.io.git -b master",
+    "deploy": "gh-pages -d out -t true -r git@github.com:bpceee/bpceee.github.io.git -b master",
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && touch ./out/.nojekyll",
     "start": "next start",
     "lint": "next lint"
   },
