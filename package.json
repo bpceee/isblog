@@ -1,36 +1,23 @@
 {
-  "name": "isblog",
+  "name": "isblognewnew",
   "version": "0.1.0",
-  "dependencies": {
-    "dotenv": "^6.2.0",
-    "gatsby": "^2.0.116",
-    "gatsby-image": "^2.0.29",
-    "gatsby-plugin-google-analytics": "^2.0.13",
-    "gatsby-plugin-offline": "^2.0.22",
-    "gatsby-plugin-react-helmet": "^3.0.6",
-    "gatsby-plugin-sharp": "^2.0.20",
-    "gatsby-plugin-typography": "^2.2.7",
-    "gatsby-source-filesystem": "^2.0.20",
-    "gatsby-source-graphql": "^2.0.10",
-    "github-markdown-css": "^3.0.1",
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0",
-    "react-helmet": "^5.2.0",
-    "react-typography": "^0.16.18",
-    "typeface-merriweather": "0.0.54",
-    "typeface-montserrat": "0.0.54",
-    "typography": "^0.16.18",
-    "typography-theme-wordpress-2016": "^0.16.18"
-  },
-  "devDependencies": {
-    "gh-pages": "^2.0.1"
-  },
+  "private": true,
   "scripts": {
-    "build": "gatsby build",
-    "deploy": "gh-pages -d public -r git@github.com:bpceee/bpceee.github.io.git -b master",
-    "develop": "gatsby develop",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@types/node": "20.4.1",
+    "@types/react": "18.2.14",
+    "@types/react-dom": "18.2.6",
+    "eslint": "8.44.0",
+    "eslint-config-next": "13.4.9",
+    "github-markdown-css": "^5.2.0",
+    "next": "13.4.9",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "typescript": "5.1.6"
   }
 }
