@@ -27,3 +27,5 @@ Runs the app in the development mode.
 ## TODO:
 
 - More environment variables to make the configuration easier
+- Fix the bug that need a reload to view CodeBox
+- Typegen from github graphql api
