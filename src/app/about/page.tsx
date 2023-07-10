@@ -13,7 +13,7 @@ export default async function Page() {
 
 const pageQuery = `
   query BlogPostBySlug($slug: Int!) {
-    repository(owner:"bpceee", name:"bpceee.github.io") {
+    repository(owner:"bpceee", name:"${process.env.BLOG_REPO}") {
       issue(number: $slug) {
         number
         title

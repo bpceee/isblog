@@ -22,7 +22,7 @@ export async function generateStaticParams() {
 
 const pageQuery = `
   query BlogPostBySlug($slug: Int!) {
-    repository(owner:"bpceee", name:"bpceee.github.io") {
+    repository(owner:"bpceee", name:"${process.env.BLOG_REPO}") {
       issue(number: $slug) {
         number
         title
@@ -42,7 +42,7 @@ const pageQuery = `
 
 const staticParamsQuery = `
   query {
-    repository(owner:"bpceee", name:"bpceee.github.io") {
+    repository(owner:"bpceee", name:"${process.env.BLOG_REPO}") {
       issues(last:100, labels:"post", orderBy: {field: CREATED_AT, direction: DESC}) {
         edges {
           node {

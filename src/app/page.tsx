@@ -9,7 +9,7 @@ export default async function Home() {
 
 const pageQuery = `
   query {
-    repository(owner:"bpceee", name:"bpceee.github.io") {
+    repository(owner:"bpceee", name:"${process.env.BLOG_REPO}") {
       issues(last:100, labels:"post", orderBy: {field: CREATED_AT, direction: DESC}) {
         edges {
           node {
