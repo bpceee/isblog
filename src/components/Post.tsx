@@ -5,6 +5,7 @@ import { Utterance } from "./Utterance";
 import "github-markdown-css/github-markdown.css";
 import styles from "./Post.module.css";
 import "./Post.css";
+import { injectCodePen } from "@/utils/injectCodePen";
 
 import { Montserrat } from "next/font/google";
 
@@ -15,6 +16,7 @@ type Props = {
 };
 
 export const Post: FC<Props> = ({ post }) => {
+  const bodyHTML = injectCodePen(post.bodyHTML);
   return (
     <article className={styles.blogPost}>
       <header>
@@ -32,7 +34,7 @@ export const Post: FC<Props> = ({ post }) => {
       </header>
       <div
         className="markdown-body"
-        dangerouslySetInnerHTML={{ __html: post.bodyHTML }}
+        dangerouslySetInnerHTML={{ __html: bodyHTML }}
       ></div>
       <Utterance postId={post.number} />
     </article>
