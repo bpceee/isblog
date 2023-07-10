@@ -28,3 +28,4 @@ Runs the app in the development mode.
 
 - More environment variables to make the configuration easier
 - Typegen from github graphql api
+- Bring back PWA

@@ -1,6 +1,11 @@
+import { Metadata } from "next";
 import React from "react";
 import { Post } from "@/components/Post";
 import { gqFetch } from "@/utils/gqFetch";
+
+export const metadata: Metadata = {
+  title: "About",
+};
 
 export default async function Page() {
   const results = await gqFetch(pageQuery, {

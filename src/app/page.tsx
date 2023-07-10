@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import { PostList } from "@/components/PostList";
 import { gqFetch } from "@/utils/gqFetch";
+
+export const metadata: Metadata = {
+  title: "Ken's Blog | All posts",
+};
+
 export default async function Home() {
   const results = await gqFetch(pageQuery);
   const posts = results.data.repository.issues.edges as any[];

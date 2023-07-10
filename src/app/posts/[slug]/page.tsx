@@ -1,13 +1,18 @@
+import { Metadata } from "next";
 import React from "react";
 import { Post } from "@/components/Post";
 import { gqFetch } from "@/utils/gqFetch";
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const results = await gqFetch(pageQuery, {
+type Params = {
+  slug: string;
+};
+
+export default async function Page({ params }: { params: Params }) {
+  const result = await gqFetch(pageQuery, {
     slug: parseInt(params.slug),
   });
 
-  const post = results.data.repository.issue;
+  const post = result.data.repository.issue;
   return <Post post={post} />;
 }
 
@@ -18,6 +23,20 @@ export async function generateStaticParams() {
   return posts.map((post: any) => ({
     slug: post.node.number.toString(),
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Params;
+}): Promise<Metadata> {
+  const result = await gqFetch(pageQuery, {
+    slug: parseInt(params.slug),
+  });
+
+  return {
+    title: result.data.repository.issue.title,
+  };
 }
 
 const pageQuery = `
