@@ -1,0 +1,10 @@
+/* somehow global doesn't work in css module? */
+.markdown-body {
+  font-family: inherit;
+}
+
+.utterances {
+  border-top: 1px solid rgba(0,0,0,.1);
+  margin-bottom: -17px;
+  margin-top: 10px;
+}
