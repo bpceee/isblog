@@ -4,10 +4,12 @@ export const injectCodePen = (originalHtml: string) => {
   const dom = new JSDOM(originalHtml);
 
   const links = dom.window.document.querySelectorAll("a");
+  let hasCodePen = false;
   links.forEach((link) => {
     if (link.textContent !== "View on CodePen") {
       return;
     }
+    hasCodePen = true;
     const href = link.href;
     const [, , , user, , slugHash] = href.split("/");
     const div = dom.window.document.createElement("div");
@@ -26,12 +28,12 @@ export const injectCodePen = (originalHtml: string) => {
           View on CodePen
         </a>.
       </p>
-      <script
-        async
-        src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-      ></script>`;
+      `;
     link.replaceWith(div);
   });
 
-  return dom.serialize();
+  return {
+    bodyHTML: dom.serialize(),
+    hasCodePen,
+  };
 };

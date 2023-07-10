@@ -2,10 +2,12 @@ import React, { FC } from "react";
 import { PostDate } from "./PostDate";
 import { PostTags } from "./PostTags";
 import { Utterance } from "./Utterance";
+import { CodePenScript } from "./CodePenScript";
+import { injectCodePen } from "@/utils/injectCodePen";
+
 import "github-markdown-css/github-markdown.css";
 import styles from "./Post.module.css";
 import "./Post.css";
-import { injectCodePen } from "@/utils/injectCodePen";
 
 import { Montserrat } from "next/font/google";
 
@@ -16,7 +18,7 @@ type Props = {
 };
 
 export const Post: FC<Props> = ({ post }) => {
-  const bodyHTML = injectCodePen(post.bodyHTML);
+  const { bodyHTML, hasCodePen } = injectCodePen(post.bodyHTML);
   return (
     <article className={styles.blogPost}>
       <header>
@@ -37,6 +39,8 @@ export const Post: FC<Props> = ({ post }) => {
         dangerouslySetInnerHTML={{ __html: bodyHTML }}
       ></div>
       <Utterance postId={post.number} />
+      {/* Load or reload CodePen script otherwise the block won't get initiated */}
+      {hasCodePen && <CodePenScript />}
     </article>
   );
 };
