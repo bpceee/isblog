@@ -1,4 +1,5 @@
 import "./globals.css";
+import Script from "next/script";
 import { Navbar } from "@/components/Navbar";
 import styles from "./Layout.module.css";
 import { Merriweather } from "next/font/google";
@@ -41,6 +42,19 @@ export default function RootLayout({
           </small>
         </footer>
       </body>
+      <Script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GTAG_ID}`}
+      ></Script>
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', '${process.env.GTAG_ID}');
+        `}
+      </Script>
     </html>
   );
 }
